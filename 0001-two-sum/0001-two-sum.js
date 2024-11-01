@@ -3,24 +3,19 @@
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function (nums, target) {
-    let pointer = 1;
+var twoSum = function(nums, target) {
+  let pointer = 0;
+  let compared = 0;
 
-    for (let i = 0; i < nums.length; i++) {
-        if (i === pointer) {
-            pointer++;
-        }
+  for (let i = 1; i < nums.length; i++) {
+    compared = nums[pointer];
+    compared += nums[i];
 
-        if (nums[i] + nums[pointer] === target) {
-            return [i, pointer];
-        } else {
-            pointer++;
-        }
-
-        if (pointer > nums.length) {
-            pointer = 0;
-        } else {
-            i -= 1;
-        }
+    if (compared === target) {
+      return [pointer, i];
+    } else if (i === nums.length - 1) {
+      pointer++;
+      i = pointer;
     }
+  }
 };
