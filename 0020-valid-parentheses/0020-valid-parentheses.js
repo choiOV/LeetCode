@@ -5,19 +5,18 @@
 var isValid = function (s) {
     if (s.length % 2 !== 0) return false;
 
+    const hash = {
+        ")": "(",
+        "]": "[",
+        "}": "{"
+    };
     const stack = [];
 
     for (const bracket of s) {
-        if (bracket === "(" || bracket === "[" || bracket === "{") {
-            stack.push(bracket);
-        } else if (
-            stack[stack.length - 1] + bracket === "()" ||
-            stack[stack.length - 1] + bracket === "[]" ||
-            stack[stack.length - 1] + bracket === "{}"
-        ) {
-            stack.pop();
+        if (bracket in hash) {
+            if (hash[bracket] !== stack.pop()) return false;
         } else {
-            return false;
+            stack.push(bracket);
         }
     }
 
