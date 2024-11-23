@@ -3,28 +3,25 @@
  * @return {boolean}
  */
 var isValid = function (s) {
-    const arrS = s.split("");
+    if (s.length === 1) return false;
+
+    const arr = [...s];
     const stack = [];
 
-    for (const bracket of arrS) {
-        if (bracket === "(" || bracket === "[" || bracket === "{") {
-            stack.push(bracket);
-        } else if (bracket === ")" || bracket === "]" || bracket === "}") {
-            if (stack.length === 0) {
-                return false;
-            } else if (
-                (bracket === ")" && stack[stack.length - 1] === "(") ||
-                (bracket === "}" && stack[stack.length - 1] === "{") ||
-                (bracket === "]" && stack[stack.length - 1] === "[")
-            ) {
-                stack.pop();
-            } else {
-                return false;
-            }
+    for (const falind of arr) {
+        if (falind === "(" || falind === "[" || falind === "{") {
+            stack.push(falind);
+        } else if (
+            stack[stack.length - 1] + falind === "()" ||
+            stack[stack.length - 1] + falind === "[]" ||
+            stack[stack.length - 1] + falind === "{}"
+        ) {
+            stack.pop();
+        } else {
+            return false;
         }
     }
+    if (stack.length !== 0) return false;
 
-    if (stack.length === 0) return true;
-
-    return false;
+    return true;
 };
