@@ -4,13 +4,10 @@
  * @return {number[]}
  */
 var twoSum = function (nums, target) {
-    const pair_idx = {};
+    const hash = {};
 
     for (let i = 0; i < nums.length; i++) {
-        if (target - nums[i] in pair_idx) {
-            return [i, pair_idx[target - nums[i]]];
-        }
-
-        pair_idx[nums[i]] = i;
+        if (target - nums[i] in hash) return [hash[target - nums[i]], i];
+        hash[nums[i]] = i;
     }
 };
