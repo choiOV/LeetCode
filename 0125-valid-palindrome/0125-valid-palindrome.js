@@ -1,36 +1,31 @@
-/**
- * @param {string} s
- * @return {boolean}
- */
 var isPalindrome = function (s) {
-    if (s.length === 0) {
-        return true;
-    }
-    let start = 0;
-    let last = s.length - 1;
-    while (start <= last) {
-        let currFirst = s[start];
-        let currLast = s[last];
-        if (!isLetterOrDigit(currFirst)) {
-            start++;
-        } else if (!isLetterOrDigit(currLast)) {
-            last--;
-        } else {
-            if (currFirst.toLowerCase() !== currLast.toLowerCase()) {
-                return false;
-            }
-            start++;
-            last--;
-        }
-    }
-    return true;
-}
+  const newS = [...s];
 
-function isLetterOrDigit(c) {
-    const code = c.charCodeAt(0);
-    return (
-        (code >= 48 && code <= 57) ||    // 숫자 (0-9)
-        (code >= 65 && code <= 90) ||    // 대문자 (A-Z)
-        (code >= 97 && code <= 122)      // 소문자 (a-z)
-    );
+  const a = newS
+    .filter((s) => {
+      if (97 <= s.charCodeAt() && s.charCodeAt() <= 122) {
+        return s;
+      } else if (65 <= s.charCodeAt() && s.charCodeAt() <= 90) {
+        return s;
+      } else if (48 <= s.charCodeAt() && s.charCodeAt() <= 57) {
+        return s;
+      }
+    })
+    .join("")
+    .toLowerCase();
+  console.log(a);
+
+  let left = 0;
+  let right = a.length - 1;
+
+  while (left <= right) {
+    if (a[left] !== a[right]) {
+      return false;
+    }
+
+    left++;
+    right--;
+  }
+
+  return true;
 };
