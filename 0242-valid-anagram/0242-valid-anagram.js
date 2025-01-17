@@ -1,16 +1,13 @@
 var isAnagram = function (s, t) {
     if (s.length !== t.length) return false;
+
     const charCount = {};
 
-    for (let i = 0; i < s.length; i++) {
-        const char = s[i];
-
+    for (const char of s) {
         charCount[char] = (charCount[char] || 0) + 1;
     }
 
-    for (let i = 0; i < t.length; i++) {
-        const char = t[i];
-
+    for (const char of t) {
         if (!charCount[char]) return false;
         charCount[char]--;
     }
