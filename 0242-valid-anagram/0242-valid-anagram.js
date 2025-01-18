@@ -1,23 +1,16 @@
-/**
- * @param {string} s
- * @param {string} t
- * @return {boolean}
- */
 var isAnagram = function (s, t) {
-  const hash = {};
-  
-  for (const str of s) {
-    hash[str] = (hash[str] || 0) + 1;
-  }
+    if (s.length !== t.length) return false;
 
-  for (const str of t) {
-    if (hash[str] === undefined) return false;
-    hash[str] -= 1;
-  }
+    const charCount = {};
 
-  for (const count in hash) {
-    if (count > 0) return false;
-  }
+    for (const char of s) {
+        charCount[char] = (charCount[char] || 0) + 1;
+    }
 
-  return true;
+    for (const char of t) {
+        if (!charCount[char]) return false;
+        charCount[char]--;
+    }
+
+    return true;
 };
