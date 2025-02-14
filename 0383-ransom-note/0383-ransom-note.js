@@ -20,25 +20,9 @@ var canConstruct = function (ransomNote, magazine) {
   }
 
   for (const key in ransomNoteHash) {
-    console.log(key)
     if (!maragzineHash[key] || ransomNoteHash[key] > maragzineHash[key])
       return false;
-    console.log(key)
-    console.log(ransomNoteHash[key])
-    console.log(maragzineHash[key])
-    
-    // if (
-    //   ransomNoteHash[key] === maragzineHash[key] ||
-    //   ransomNoteHash[key] < maragzineHash[key]
-    // )
-    //   return true;
-
-    console.log(key);
-    console.log(ransomNoteHash[key]);
-
-    console.log(maragzineHash[key]);
   }
-  return true
-  console.log(ransomNoteHash);
-  console.log(maragzineHash);
+
+  return true;
 };
