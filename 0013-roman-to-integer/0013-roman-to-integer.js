@@ -3,78 +3,78 @@
  * @return {number}
  */
 var romanToInt = function (s) {
-  const result = [];
+    const result = [];
 
-  for (let i = 0; i < s.length; i++) {
-    switch (s[i]) {
-      case "I":
-        if (s[i] + s[i + 1] === "IV") {
-          result.push(4);
-          i++;
-          break;
-        }
+    for (let i = 0; i < s.length; i++) {
+        switch (s[i]) {
+            case "I":
+                if (s[i] + s[i + 1] === "IV") {
+                    result.push(4);
+                    i++;
+                    break;
+                }
 
-        if (s[i] + s[i + 1] === "IX") {
-          result.push(9);
-          i++;
-          break;
-        }
-        result.push(1);
-        break;
-      case "V":
-        result.push(5);
-        break;
-      case "X":
-        if (s[i] + s[i + 1] === "XL") {
-          result.push(40);
-          i++;
-          break;
-        }
+                if (s[i] + s[i + 1] === "IX") {
+                    result.push(9);
+                    i++;
+                    break;
+                }
+                result.push(1);
+                break;
+            case "V":
+                result.push(5);
+                break;
+            case "X":
+                if (s[i] + s[i + 1] === "XL") {
+                    result.push(40);
+                    i++;
+                    break;
+                }
 
-        if (s[i] + s[i + 1] === "XC") {
-          result.push(90);
-          i++;
-          break;
-        }
+                if (s[i] + s[i + 1] === "XC") {
+                    result.push(90);
+                    i++;
+                    break;
+                }
 
-        result.push(10);
-        break;
-      case "L":
-        result.push(50);
-        break;
-      case "C":
-        if (s[i] + s[i + 1] === "CD") {
-          result.push(400);
-          i++;
-          break;
-        }
+                result.push(10);
+                break;
+            case "L":
+                result.push(50);
+                break;
+            case "C":
+                if (s[i] + s[i + 1] === "CD") {
+                    result.push(400);
+                    i++;
+                    break;
+                }
 
-        if (s[i] + s[i + 1] === "CM") {
-          result.push(900);
-          i++;
-          break;
+                if (s[i] + s[i + 1] === "CM") {
+                    result.push(900);
+                    i++;
+                    break;
+                }
+                result.push(100);
+                break;
+            case "D":
+                result.push(500);
+                break;
+            case "M":
+                result.push(1000);
+                break;
         }
-        result.push(100);
-        break;
-      case "D":
-        result.push(500);
-        break;
-      case "M":
-        result.push(1000);
-        break;
-    }
-  }
-
-  return result.reduce((acc, value, cIndex, array) => {
-    if (value < array[cIndex + 1]) {
-      return (acc += array[cIndex + 1] - value);
     }
 
-    return (acc += value);
-  });
+    return result.reduce((acc, value, cIndex, array) => {
+        if (value < array[cIndex + 1]) {
+            return (acc += array[cIndex + 1] - value);
+        }
+
+        return (acc += value);
+    });
 };
 
-// 12:44 풀이시작
+// 12:44 풀이시작 - 01:18 풀이종료
 
 /**
     큰 숫자가 작은 숫자보다 앞에 있다면 일반적인 숫자 세기를 진행하면 된다.
