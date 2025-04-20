@@ -3,5 +3,5 @@
  * @return {boolean}
  */
 var isEmpty = function (obj) {
-    return !Boolean(Object.keys(obj).length);
+    return JSON.stringify(obj).length === 2;
 };
