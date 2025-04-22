@@ -2,7 +2,7 @@
  * @return {null|boolean|number|string|Array|Object}
  */
 Array.prototype.last = function () {
-    return this[this.length - 1] === undefined ? -1 : this[this.length - 1];
+    return !this.length ? -1 : this[this.length - 1];
 };
 
 /**
