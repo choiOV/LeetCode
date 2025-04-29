@@ -4,7 +4,6 @@ class EventEmitter {
     }
 
     subscribe(eventName, callback) {
-        this.eventName = callback;
         if (!this.events[eventName]) {
             this.events[eventName] = [];
         }
