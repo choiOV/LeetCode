@@ -4,24 +4,21 @@ class Calculator {
     }
 
     add(value) {
-        const resultCal = new Calculator(this.result);
+        this.result += value;
 
-        resultCal.result += value;
-        return resultCal;
+        return this;
     }
 
     subtract(value) {
-        const resultCal = new Calculator(this.result);
+        this.result -= value;
 
-        resultCal.result -= value;
-        return resultCal;
+        return this;
     }
 
     multiply(value) {
-        const resultCal = new Calculator(this.result);
+        this.result *= value;
 
-        resultCal.result *= value;
-        return resultCal;
+        return this;
     }
 
     divide(value) {
@@ -29,17 +26,15 @@ class Calculator {
             throw new Error("Division by zero is not allowed");
         }
 
-        const resultCal = new Calculator(this.result);
+        this.result /= value;
 
-        resultCal.result /= value;
-        return resultCal;
+        return this;
     }
 
     power(value) {
-        const resultCal = new Calculator(this.result);
+        this.result **= value;
 
-        resultCal.result **= value;
-        return resultCal;
+        return this;
     }
 
     getResult() {
