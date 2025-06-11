@@ -11,12 +11,9 @@ var firstUniqChar = function (s) {
 
   let onlyOne = "";
 
-  for (const char of s) {
-    if (hash[char] === 1) {
-      onlyOne = char;
-      break;
-    }
+  for (let i = 0; i < s.length; i++) {
+    if (hash[s[i]] === 1) return i;
   }
 
-  return [...s].findIndex((char) => char === onlyOne);
+  return -1;
 };
