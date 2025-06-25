@@ -1,16 +1,32 @@
 var isAnagram = function (s, t) {
-    if (s.length !== t.length) return false;
+  if (s.length !== t.length) return false;
+  const hash = {};
 
-    const charCount = {};
+  for (const char of s) {
+    const lower = char.toLowerCase();
+    if (lower.charCodeAt() < 97 || lower.charCodeAt() > 122) continue;
 
-    for (const char of s) {
-        charCount[char] = (charCount[char] || 0) + 1;
+    if (!hash[lower]) {
+      hash[lower] = 1;
+      continue;
     }
 
-    for (const char of t) {
-        if (!charCount[char]) return false;
-        charCount[char]--;
+    if (hash[lower]) {
+      hash[lower] += 1;
     }
+  }
 
-    return true;
+  for (const char of t) {
+    const lower = char.toLowerCase();
+
+    if (hash[lower] < 0) return false;
+
+    if (hash[lower]) {
+      hash[lower] -= 1;
+    }
+  }
+
+  const hashArray = Object.values(hash);
+
+  return hashArray.every((count) => count <= 0);
 };
