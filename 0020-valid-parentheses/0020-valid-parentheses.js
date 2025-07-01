@@ -3,7 +3,6 @@
  * @return {boolean}
  */
 var isValid = function (s) {
-  if (s.length === 1) return false;
   const stack = [];
 
   for (const bracket of s) {
@@ -25,5 +24,5 @@ var isValid = function (s) {
     }
   }
 
-  return true;
+  return stack.length === 0 ? true : false;
 };
