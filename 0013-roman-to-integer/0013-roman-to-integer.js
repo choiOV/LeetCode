@@ -3,7 +3,7 @@
  * @return {number}
  */
 var romanToInt = function (s) {
-    const result = [];
+    const result = []
 
     for (let i = 0; i < s.length; i++) {
         switch (s[i]) {
