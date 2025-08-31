@@ -1,36 +1,31 @@
-/**
- * @param {string} s
- * @return {boolean}
- */
 var isPalindrome = function (s) {
-    if (s.length === 0) {
-        return true;
+  const isLetterOrNumber = (string) => {
+    const asciiS = string.charCodeAt();
+    if (
+      (48 <= asciiS && asciiS <= 57) ||
+      (65 <= asciiS && asciiS <= 90) ||
+      (97 <= asciiS && asciiS <= 122)
+    ) {
+      return true;
     }
-    let start = 0;
-    let last = s.length - 1;
-    while (start <= last) {
-        let currFirst = s[start];
-        let currLast = s[last];
-        if (!isLetterOrDigit(currFirst)) {
-            start++;
-        } else if (!isLetterOrDigit(currLast)) {
-            last--;
-        } else {
-            if (currFirst.toLowerCase() !== currLast.toLowerCase()) {
-                return false;
-            }
-            start++;
-            last--;
-        }
-    }
-    return true;
-}
+  };
 
-function isLetterOrDigit(c) {
-    const code = c.charCodeAt(0);
-    return (
-        (code >= 48 && code <= 57) ||
-        (code >= 65 && code <= 90) ||
-        (code >= 97 && code <= 122)
-    );
+  let left = 0;
+  let right = s.length - 1;
+
+  while (left <= right) {
+    if (!isLetterOrNumber(s[left])) {
+      left++;
+    } else if (!isLetterOrNumber(s[right])) {
+      right--;
+    } else {
+      if (s[left].toLowerCase() !== s[right].toLowerCase()) {
+        return false;
+      } else {
+        left++;
+        right--;
+      }
+    }
+  }
+  return true;
 };
