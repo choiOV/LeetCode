@@ -9,8 +9,6 @@ var firstUniqChar = function (s) {
     hash[char] = (hash[char] || 0) + 1;
   }
 
-  let onlyOne = "";
-
   for (let i = 0; i < s.length; i++) {
     if (hash[s[i]] === 1) return i;
   }
