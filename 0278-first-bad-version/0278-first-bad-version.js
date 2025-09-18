@@ -20,20 +20,20 @@ var solution = function (isBadVersion) {
   return function (n) {
     let start = 0;
     let end = n;
-    let mid = null;
-    let badVersion
+    let mid;
+    let badVersion;
 
     while (start <= end) {
-      mid = Math.floor((start + end) / 2)
+      mid = Math.floor((start + end) / 2);
 
       if (isBadVersion(mid)) {
-        badVersion = mid
-        end = mid - 1
+        badVersion = mid;
+        end = mid - 1;
       } else {
-        start = mid + 1
+        start = mid + 1;
       }
     }
 
-    return badVersion
+    return badVersion;
   };
 };
