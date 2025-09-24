@@ -1,32 +1,34 @@
-/**
- * @param {number[]} nums
- * @return {number[][]}
- */
 var threeSum = function (nums) {
   const result = [];
   const sortedNums = nums.sort((a, b) => a - b);
 
-  for (let i = 0; i < sortedNums.length - 2; i++) {
+  for (let i = 0; i < sortedNums.length; i++) {
     if (i > 0 && sortedNums[i] === sortedNums[i - 1]) continue;
 
-    let left = i + 1;
-    let right = sortedNums.length - 1;
+    let j = i + 1;
+    let k = sortedNums.length - 1;
 
-    while (left < right) {
-      const sum = sortedNums[i] + sortedNums[left] + sortedNums[right];
+    while (j < k) {
+      const x = sortedNums[i];
+      const y = sortedNums[j];
+      const z = sortedNums[k];
 
-      if (sum === 0) {
-        result.push([sortedNums[i], sortedNums[left], sortedNums[right]]);
-
-        while (left < right && sortedNums[left] === sortedNums[left + 1]) left++;
-        while (left < right && sortedNums[right] === sortedNums[right - 1]) right--;
-
-        left++;
-        right--;
-      } else if (sum < 0) {
-        left++;
+      if (y + z < -x) {
+        j++;
+      } else if (y + z > -x) {
+        k--;
       } else {
-        right--;
+        result.push([x, y, z]);
+
+        while (j < k && sortedNums[j] === sortedNums[j + 1]) {
+          j++;
+        }
+        while (j < k && sortedNums[k] === sortedNums[k - 1]) {
+          k--;
+        }
+
+        j++;
+        k--;
       }
     }
   }
