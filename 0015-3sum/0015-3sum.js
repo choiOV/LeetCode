@@ -20,12 +20,8 @@ var threeSum = function (nums) {
       } else {
         result.push([x, y, z]);
 
-        while (j < k && sortedNums[j] === sortedNums[j + 1]) {
-          j++;
-        }
-        while (j < k && sortedNums[k] === sortedNums[k - 1]) {
-          k--;
-        }
+        while (j < k && sortedNums[j] === sortedNums[j + 1]) j++;
+        while (j < k && sortedNums[k] === sortedNums[k - 1]) k--;
 
         j++;
         k--;
@@ -33,5 +29,5 @@ var threeSum = function (nums) {
     }
   }
 
-  return result;
+  return result
 };
