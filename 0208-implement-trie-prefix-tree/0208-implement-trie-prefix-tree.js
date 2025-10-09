@@ -1,5 +1,5 @@
 var Trie = function () {
-  this.hash = {};
+  this.root = {};
 };
 
 /**
@@ -7,7 +7,17 @@ var Trie = function () {
  * @return {void}
  */
 Trie.prototype.insert = function (word) {
-  this.hash[word] = word;
+  let node = this.root;
+
+  for (const char of word) {
+    if (!node[char]) {
+      node[char] = {};
+    }
+
+    node = node[char];
+  }
+
+  node.isEnd = true;
 };
 
 /**
@@ -15,7 +25,17 @@ Trie.prototype.insert = function (word) {
  * @return {boolean}
  */
 Trie.prototype.search = function (word) {
-  return this.hash[word] === undefined ? false : true;
+  let node = this.root;
+
+  for (const char of word) {
+    if (!node[char]) {
+      return false;
+    }
+
+    node = node[char];
+  }
+
+  return node.isEnd === true;
 };
 
 /**
@@ -23,11 +43,17 @@ Trie.prototype.search = function (word) {
  * @return {boolean}
  */
 Trie.prototype.startsWith = function (prefix) {
-  for (const key in this.hash) {
-    if (key.startsWith(prefix)) return true;
+  let node = this.root
+
+  for (const char of prefix) {
+    if (!node[char]) {
+      return false
+    }
+
+    node = node[char]
   }
 
-  return false;
+  return true
 };
 
 /**
