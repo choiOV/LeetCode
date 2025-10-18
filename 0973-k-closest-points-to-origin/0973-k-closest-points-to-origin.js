@@ -1,14 +1,16 @@
+/**
+ * @param {number[][]} points
+ * @param {number} k
+ * @return {number[][]}
+ */
+
+// 풀이 2회차
 var kClosest = function (points, k) {
-    const euclid = [];
+  const result = points
+    .sort(([a1, a2], [b1, b2]) => {
+      return Math.sqrt(a1 ** 2 + a2 ** 2) - Math.sqrt(b1 ** 2 + b2 ** 2);
+    })
+    .splice(0, k);
 
-    for (const p of points) {
-        const dist = p[0] ** 2 + p[1] ** 2;
-        euclid.push([dist, p]);
-    }
-
-    euclid.sort((a, b) => a[0] - b[0]);
-
-    const result = euclid.slice(0, k).map(([_, p]) => p);
-
-    return result;
+  return result;
 };
